@@ -1,0 +1,14 @@
+Tong Bill : 2800000 [
+  {
+    "TenSanPham": "Ao pull",
+    "GiaTien": 400000,
+    "SoLuong": 3,
+    "TongTien": 1200000
+  },
+  {
+    "TenSanPham": "Quan jean",
+    "GiaTien": 400000,
+    "SoLuong": 4,
+    "TongTien": 1600000
+  }
+]

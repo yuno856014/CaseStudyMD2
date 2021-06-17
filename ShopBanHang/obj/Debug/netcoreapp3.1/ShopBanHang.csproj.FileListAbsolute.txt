@@ -1,0 +1,15 @@
+D:\Học Tập\Module2_baitap\CaseStudy\ShopBanHang\bin\Debug\netcoreapp3.1\ShopBanHang.exe
+D:\Học Tập\Module2_baitap\CaseStudy\ShopBanHang\bin\Debug\netcoreapp3.1\ShopBanHang.deps.json
+D:\Học Tập\Module2_baitap\CaseStudy\ShopBanHang\bin\Debug\netcoreapp3.1\ShopBanHang.runtimeconfig.json
+D:\Học Tập\Module2_baitap\CaseStudy\ShopBanHang\bin\Debug\netcoreapp3.1\ShopBanHang.runtimeconfig.dev.json
+D:\Học Tập\Module2_baitap\CaseStudy\ShopBanHang\bin\Debug\netcoreapp3.1\ShopBanHang.dll
+D:\Học Tập\Module2_baitap\CaseStudy\ShopBanHang\bin\Debug\netcoreapp3.1\ShopBanHang.pdb
+D:\Học Tập\Module2_baitap\CaseStudy\ShopBanHang\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+D:\Học Tập\Module2_baitap\CaseStudy\ShopBanHang\obj\Debug\netcoreapp3.1\ShopBanHang.csproj.AssemblyReference.cache
+D:\Học Tập\Module2_baitap\CaseStudy\ShopBanHang\obj\Debug\netcoreapp3.1\ShopBanHang.AssemblyInfoInputs.cache
+D:\Học Tập\Module2_baitap\CaseStudy\ShopBanHang\obj\Debug\netcoreapp3.1\ShopBanHang.AssemblyInfo.cs
+D:\Học Tập\Module2_baitap\CaseStudy\ShopBanHang\obj\Debug\netcoreapp3.1\ShopBanHang.csproj.CoreCompileInputs.cache
+D:\Học Tập\Module2_baitap\CaseStudy\ShopBanHang\obj\Debug\netcoreapp3.1\ShopBanHang.csproj.CopyComplete
+D:\Học Tập\Module2_baitap\CaseStudy\ShopBanHang\obj\Debug\netcoreapp3.1\ShopBanHang.dll
+D:\Học Tập\Module2_baitap\CaseStudy\ShopBanHang\obj\Debug\netcoreapp3.1\ShopBanHang.pdb
+D:\Học Tập\Module2_baitap\CaseStudy\ShopBanHang\obj\Debug\netcoreapp3.1\ShopBanHang.genruntimeconfig.cache
