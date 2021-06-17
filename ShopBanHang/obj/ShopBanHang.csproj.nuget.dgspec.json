@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Học Tập\\Module2_baitap\\CaseStudy\\CaseStudyMD2\\ShopBanHang\\ShopBanHang.csproj": {}
+    "D:\\Học Tập\\Module2_baitap\\CaseStudyMD2\\ShopBanHang\\ShopBanHang.csproj": {}
   },
   "projects": {
-    "D:\\Học Tập\\Module2_baitap\\CaseStudy\\CaseStudyMD2\\ShopBanHang\\ShopBanHang.csproj": {
+    "D:\\Học Tập\\Module2_baitap\\CaseStudyMD2\\ShopBanHang\\ShopBanHang.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Học Tập\\Module2_baitap\\CaseStudy\\CaseStudyMD2\\ShopBanHang\\ShopBanHang.csproj",
+        "projectUniqueName": "D:\\Học Tập\\Module2_baitap\\CaseStudyMD2\\ShopBanHang\\ShopBanHang.csproj",
         "projectName": "ShopBanHang",
-        "projectPath": "D:\\Học Tập\\Module2_baitap\\CaseStudy\\CaseStudyMD2\\ShopBanHang\\ShopBanHang.csproj",
+        "projectPath": "D:\\Học Tập\\Module2_baitap\\CaseStudyMD2\\ShopBanHang\\ShopBanHang.csproj",
         "packagesPath": "C:\\Users\\ADMIN\\.nuget\\packages\\",
-        "outputPath": "D:\\Học Tập\\Module2_baitap\\CaseStudy\\CaseStudyMD2\\ShopBanHang\\obj\\",
+        "outputPath": "D:\\Học Tập\\Module2_baitap\\CaseStudyMD2\\ShopBanHang\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\ADMIN\\AppData\\Roaming\\NuGet\\NuGet.Config",

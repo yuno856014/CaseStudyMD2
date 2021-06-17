@@ -1,0 +1,19 @@
+{
+  "Phone": [
+    {
+      "NameProduct": "IPhone XS",
+      "Price": 15809000,
+      "Amount": 20
+    },
+    {
+      "NameProduct": "SamSung",
+      "Price": 2290000,
+      "Amount": 20
+    },
+    {
+      "NameProduct": "Oppo",
+      "Price": 6690000,
+      "Amount": 20
+    }
+  ]
+}

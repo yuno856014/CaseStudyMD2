@@ -6,6 +6,6 @@ namespace ShopBanHang
 {
     class GioHang
     {
-        public List<Menu> Menu { get; set; }
+        public List<Phone> Phone { get; set; }
     }
 }

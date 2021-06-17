@@ -8,7 +8,7 @@ namespace ShopBanHang
 {
     class Helper<T> where T:class
     {
-        public static List<Menu> meNu = new List<Menu>();
+        public static List<Phone> phoNe = new List<Phone>();
         public static string billFile = "bill.json";
         public static T ReadFile(string filename )
         {
@@ -36,10 +36,10 @@ namespace ShopBanHang
             {
                 Console.ForegroundColor = ConsoleColor.Blue;
                 Console.WriteLine("--------Menu--------");
-                Console.WriteLine("1.Chon san pham muon mua !");
-                Console.WriteLine("2.Xem gio hang !");
-                Console.WriteLine("3.Xoa bot hang !");
-                Console.WriteLine("0.Tinh tien va thoat !");
+                Console.WriteLine("1.Select the product you want to buy !");
+                Console.WriteLine("2.View cart !");
+                Console.WriteLine("3.Remove product !");
+                Console.WriteLine("0.Invoice Printing  and Exit Menu !");
                 Console.ResetColor();
                 if(!int.TryParse(Console.ReadLine(),out choice))
                 {
@@ -49,97 +49,103 @@ namespace ShopBanHang
                 switch(choice)
                 {
                     case 1:
-                        muaMatHang();
+                        buyProduct();
                         break;
                     case 2:
-                        XemGioHang();
+                        VeiwProduct();
                         break;
                     case 3:
                         break;
                     case 0:
-                        TinhTien();
+                        Bill();
                         Environment.Exit(0);
                         break;
                 }    
             } while (choice != 0);
         }
-        public static void MuaHang(List<Menu> menus, out long sum)
+        public static void Buyproduct(List<Phone> phones, out long sum)
         {
-            var result = Helper<GioHang>.ReadFile("Menu.json");
+            var result = Helper<GioHang>.ReadFile("Phone.json");
             string choice = "";
             do
             {
                 Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine("Nhap ten hang ban muon mua !");
+                Console.WriteLine("Enter the name of the item you want to buy !");
                 Console.ResetColor();
                 string name = Console.ReadLine();
                 Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine("Nhap so luong ban muon mua !");
+                Console.WriteLine("Enter the quantity you want to buy !");
                 Console.ResetColor();
                 int sl = int.Parse(Console.ReadLine());
                 bool check = false;
-                foreach(Menu menu in menus)
+                foreach(Phone phone in phones)
                 {
-                    if(menu.TenSanPham.ToLower() == name.ToLower())
+                    if(phone.NameProduct.ToLower() == name.ToLower())
                     {
                         check = true;
                     }    
                 }    
-                for(int i = 0; i < result.Menu.Count; i++)
+                for(int i = 0; i < result.Phone.Count; i++)
                 {
-                    if(result.Menu[i].TenSanPham.ToLower() == name.ToLower())
+                    if(result.Phone[i].NameProduct.ToLower() == name.ToLower())
                     {
                         if(check)
                         {
-                            foreach(Menu menu in menus)
+                            foreach(Phone phone in phones)
                             {
-                                if(menu.TenSanPham.ToLower() == name.ToLower())
+                                if(phone.NameProduct.ToLower() == name.ToLower())
                                 {
-                                    menu.SoLuong += sl;
+                                    phone.Price += sl;
                                 }    
                             }    
                         }
                         else
                         {
-                            menus.Add(new Menu()    
+                            phones.Add(new Phone()    
                             {
-                                TenSanPham = name,
-                                SoLuong = sl,
-                                GiaTien = result.Menu[i].TongTien
+                                NameProduct = name,
+                                Amount = sl,
+                                Price = result.Phone[i].TotalMoney
                             });
                         }    
                     }    
                 }
                 Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine("Ban co muon tiep tuc mua hang ?");
-                Console.WriteLine("Vui long An c de tiep tuc,An k de thoat!");
+                Console.WriteLine("Do you want to continue shopping?");
+                Console.WriteLine("Please press c to continue, press k to exit!");
                 Console.ResetColor();
                 choice = Console.ReadLine();
             } while (choice != "k");
             sum = 0;
-            foreach(Menu menu in menus)
+            foreach(Phone item in phones)
             {
-                sum += menu.TongTien;
+                sum += item.TotalMoney;
             }    
         }
-        public static void XemGioHang()
+        public static void VeiwProduct()
         {
-            foreach(Menu menu in meNu)
+            foreach(Phone menu in phoNe)
             {
                 Console.WriteLine(menu.ToString());
             }    
-        }    
-        public static void muaMatHang()
+        }   
+        public static void Remove()
         {
-            Helper<Menu>.MuaHang(meNu, out long sum);
+           
+            
+        }
+        public static void buyProduct()
+        {
+            Helper<Phone>.Buyproduct(phoNe, out long sum);
             using (StreamWriter sw = File.CreateText(Path.Combine(Common.FilePath, billFile)))
             {
-                sw.WriteLine($"Tong Bill : {sum}");
+                sw.WriteLine($"Bill : {sum} VND");
             }
         }   
-        public static void TinhTien()
+        public static void Bill()
         {
-            Helper<GioHang>.WriteFile(billFile, meNu);
+            Helper<GioHang>.WriteFile(billFile, phoNe);
+            Console.WriteLine("Thanks !");
         }
     }
 }
