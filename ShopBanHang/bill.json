@@ -1,14 +1,2 @@
-Bill : 538800000 VND [
-  {
-    "NameProduct": "Oppo",
-    "Price": 133800000,
-    "Amount": 3,
-    "TotalMoney": 401400000
-  },
-  {
-    "NameProduct": "Samsung",
-    "Price": 45800000,
-    "Amount": 3,
-    "TotalMoney": 137400000
-  }
-]
+Bill : 401400000 VND
+[{"NameProduct":"oppo","Price":133800000,"Amount":3,"TotalMoney":401400000}]
