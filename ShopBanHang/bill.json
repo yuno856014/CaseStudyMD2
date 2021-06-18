@@ -1,15 +1,15 @@
-Product Phone : 137400000 VND [
+Product Phone : 401400000 VND [
   {
-    "NameProduct": "samsung",
-    "Price": 45800000,
+    "NameProduct": "oppo",
+    "Price": 133800000,
     "Amount": 3,
-    "TotalMoney": 137400000
+    "TotalMoney": 401400000
   }
-] Product Laptop : 620000000 VND [
+] Product Laptop : 930000000 VND [
   {
     "NameProduct": "hp",
     "Price": 310000000,
-    "Amount": 2,
-    "TotalMoney": 620000000
+    "Amount": 3,
+    "TotalMoney": 930000000
   }
-] Bill : 757400000 VND
+] Bill : 1331400000 VND

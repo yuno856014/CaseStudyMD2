@@ -315,7 +315,7 @@ namespace ShopBanHang
             Helper<GioHang>.billAll(gioHang, out long bill);
             using (StreamWriter sw = File.AppendText(Path.Combine(Common.FilePath,billFile)))
             {
-                sw.Write($" Bill : {bill} VND");
+                sw.WriteLine($" Bill : {bill} VND");
             }
         }
     }
