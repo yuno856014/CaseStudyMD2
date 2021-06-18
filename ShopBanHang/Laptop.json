@@ -1,0 +1,19 @@
+{
+  "LapTop": [
+    {
+      "NameProduct": "Asus",
+      "Price": 20500000,
+      "Amount": 20
+    },
+    {
+      "NameProduct": "Acer",
+      "Price": 19500000,
+      "Amount": 20
+    },
+    {
+      "NameProduct": "HP",
+      "Price": 15500000,
+      "Amount": 20
+    }
+  ]
+}

@@ -6,7 +6,7 @@ namespace ShopBanHang
     {
         static void Main(string[] args)
         {
-            Helper<GioHang>.MainMenu();
+            Helper<GioHang>.BuildMenu();
         }
     }
 }
