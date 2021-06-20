@@ -76,6 +76,7 @@ namespace ShopBanHang
                             switch (choice1)
                             {
                                 case 1:
+                                    Phone.ShowPhone();
                                    buyPhone();
                                     break;
                                 case 2:
@@ -110,6 +111,7 @@ namespace ShopBanHang
                             switch (choice2)
                             {
                                 case 1:
+                                    Laptop.ShowLatop();
                                     buyLaptop();
                                     break;
                                 case 2:
@@ -211,18 +213,35 @@ namespace ShopBanHang
         }
         public static void UpdatePhone()
         {
+            Phone.ShowCart(phone);
             Console.WriteLine("Enter name update !");
             string name = Console.ReadLine();
-            for (int i = 0; i < phone.Count; i++)
+            bool check = false;
+            foreach(Phone item in phone)
             {
-                if (phone[i].NameProduct.ToLower() == name.ToLower())
+                if(item.NameProduct.ToLower() == name.ToLower())
                 {
-                    Console.WriteLine("Enter new amount !");
-                    phone[i].Amount = int.Parse(Console.ReadLine());
-                }
-                else
-                    Console.WriteLine("Name does not exist");
+                    Console.WriteLine("Enter new amout !");
+                    int sl = int.Parse(Console.ReadLine());
+                    check = true;
+                    if(sl == 0)
+                    {
+                        phone.Remove(item);
+                        Console.WriteLine("The product has been remove! ");
+                        break;
+                    }
+                    else
+                    {
+                        item.Amount = sl;
+                    } 
+                        
+                }    
+            }  
+            if(check == false )
+            {
+                Console.WriteLine("Name does not exist");
             }
+            Phone.ShowCart(phone);
         }
         public static void buyPhone()
         { 
@@ -313,18 +332,35 @@ namespace ShopBanHang
         }
         public static void UpdateLaptop()
         {
+            Laptop.ShowCart(lapTop);
             Console.WriteLine("Enter name update !");
             string name = Console.ReadLine();
-            for(int i = 0; i < lapTop.Count;i++)
+            bool check = false;
+            foreach (Laptop item in lapTop)
             {
-                if (lapTop[i].NameProduct.ToLower() == name.ToLower())
+                if (item.NameProduct.ToLower() == name.ToLower())
                 {
-                    Console.WriteLine("Enter new amount !");
-                    lapTop[i].Amount = int.Parse(Console.ReadLine());
+                    Console.WriteLine("Enter new amout !");
+                    int sl = int.Parse(Console.ReadLine());
+                    check = true;
+                    if (sl == 0)
+                    {
+                        lapTop.Remove(item);
+                        Console.WriteLine("The product has been remove! ");
+                        break;
+                    }
+                    else
+                    {
+                        item.Amount = sl;
+                    }
+
                 }
-                else
-                    Console.WriteLine("Name does not exist");
-            }    
+            }
+            if (check == false)
+            {
+                Console.WriteLine("Name does not exist");
+            }
+            Laptop.ShowCart(lapTop);
         }    
         public static void buyLaptop()
         {

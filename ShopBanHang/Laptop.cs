@@ -18,5 +18,20 @@ namespace ShopBanHang
         {
             return $"Name Product : {NameProduct}\tPrice : {Price}\tAmount : {Amount}";
         }
+        public static void ShowLatop()
+        {
+            var result = Helper<GioHang>.ReadFile("Laptop.json");
+            foreach (var item in result.LapTop)
+            {
+                Console.WriteLine($"Name Product : {item.NameProduct}\tPrice {item.Price}VND");
+            }
+        }
+        public static void ShowCart(List<Laptop> laptops)
+        {
+            foreach (Laptop item in laptops)
+            {
+                Console.WriteLine(item.ToString());
+            }
+        }
     }
 }
