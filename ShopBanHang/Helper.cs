@@ -4,35 +4,37 @@ using System.Text;
 using System.IO;
 using Newtonsoft.Json;
 using System.Linq;
+using System.Collections;
 
 namespace ShopBanHang
 {
-    class Helper<T> where T:class
+    class Helper<T> where T : class
     {
-        public static List<Phone> phoNe = new List<Phone>();
+        public static List<Phone> phone = new List<Phone>();
         public static List<Laptop> lapTop = new List<Laptop>();
         public static List<GioHang> gioHang = new List<GioHang>();
+        public static BillAll billall = new BillAll();
         public static string billFile = "bill.json";
         public static long totalLaptop = 0;
         public static long totalPhone = 0;
-        public static T ReadFile(string filename )
+        public static T ReadFile(string filename)
         {
             var fullpath = Path.Combine(Common.FilePath, filename);
             var data = "";
             using (StreamReader sr = File.OpenText(fullpath))
             {
                 data = sr.ReadToEnd();
-            }   
+            }
             return JsonConvert.DeserializeObject<T>(data);
         }
-        public static void WriteFile(string fileName,object data)
+        public static void WriteFile(string fileName, object data)
         {
             var serializeObject = JsonConvert.SerializeObject(data);
             var fullpath = Path.Combine(Common.FilePath, fileName);
-            using(StreamWriter sw = File.AppendText(fullpath))
+            using (StreamWriter sw = File.AppendText(fullpath))
             {
                 sw.WriteLine(serializeObject);
-            }    
+            }
         }
         public static void BuildMenu()
         {
@@ -62,7 +64,7 @@ namespace ShopBanHang
                             Console.WriteLine("-------Phone-------");
                             Console.WriteLine("1.Add to cart !");
                             Console.WriteLine("2.View cart !");
-                            Console.WriteLine("3.Print Bill !");
+                            Console.WriteLine("3.Update Amout Phone !");
                             Console.WriteLine("0.Back Menu !");
                             Console.ResetColor();
                             int choice1 = 0;
@@ -74,13 +76,13 @@ namespace ShopBanHang
                             switch (choice1)
                             {
                                 case 1:
-                                    buyPhone();
+                                   buyPhone();
                                     break;
                                 case 2:
                                     VeiwPhone();
                                     break;
                                 case 3:
-                                    BillPhone();
+                                    UpdatePhone();
                                     break;
                                 case 0:
                                     goto Main;
@@ -96,7 +98,7 @@ namespace ShopBanHang
                             Console.WriteLine("-------Laptop-------");
                             Console.WriteLine("1.Add to cart !");
                             Console.WriteLine("2.View cart !");
-                            Console.WriteLine("3.Print Bill !");
+                            Console.WriteLine("3.Update Amout Laptop !");
                             Console.WriteLine("0.Back Menu !");
                             Console.ResetColor();
                             int choice2 = 0;
@@ -114,7 +116,7 @@ namespace ShopBanHang
                                     VeiwLaptop();
                                     break;
                                 case 3:
-                                    BillLaptop();
+                                    UpdateLaptop();
                                     break;
                                 case 0:
                                     goto Main;
@@ -145,75 +147,87 @@ namespace ShopBanHang
                 Console.ResetColor();
                 int sl = int.Parse(Console.ReadLine());
                 bool check = false;
-                foreach(Phone phone in phones)
+                foreach (Phone phone in phones)
                 {
-                    if(phone.NameProduct.ToLower() == name.ToLower())
+                    if (phone.NameProduct.ToLower() == name.ToLower())
                     {
                         check = true;
-                    }    
-                }    
-                for(int i = 0; i < result.Phone.Count; i++)
+                    }
+                }
+                for (int i = 0; i < result.Phone.Count; i++)
                 {
-                    if(result.Phone[i].NameProduct.ToLower() == name.ToLower())
+                    if (result.Phone[i].NameProduct.ToLower() == name.ToLower())
                     {
-                        if(check)
+                        if (result.Phone[i].Amount < sl)
                         {
-                            foreach(Phone phone in phones)
-                            {
-                                if(phone.NameProduct.ToLower() == name.ToLower())
-                                {
-                                    phone.Price += sl;
-                                }    
-                            }    
+                            Console.WriteLine("Enter too much, please enter less !");
                         }
                         else
                         {
-                            phones.Add(new Phone()    
+                            if (check)
                             {
-                                NameProduct = name,
-                                Amount = sl,
-                                Price = result.Phone[i].TotalMoney
-                            });
-                        }    
-                    }    
+                                foreach (Phone phone in phones)
+                                {
+                                    if (phone.NameProduct.ToLower() == name.ToLower())
+                                    {
+                                        phone.Price += sl;
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                phones.Add(new Phone()
+                                {
+                                    NameProduct = name,
+                                    Amount = sl,
+                                    Price = result.Phone[i].TotalMoney
+                                });
+                            }
+                        }
+                    }
                 }
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("Do you want to continue shopping?");
                 Console.WriteLine("Please press 1 to continue!");
                 Console.WriteLine("Press 2 to exit!");
                 Console.ResetColor();
-                if(!int.TryParse(Console.ReadLine(),out choice))
+                if (!int.TryParse(Console.ReadLine(), out choice))
                 {
                     choice = 1;
-                }    
+                }
             } while (choice != 2);
             sumPhone = 0;
-            foreach(Phone item in phones)
+            foreach (Phone item in phones)
             {
                 sumPhone += item.TotalMoney;
-            }    
+            }
         }
         public static void VeiwPhone()
         {
-            foreach (Phone item in phoNe)
+            foreach (Phone item in phone)
             {
                 Console.WriteLine(item.ToString());
             }
         }
-        public static void buyPhone()
+        public static void UpdatePhone()
         {
-            Helper<GioHang>.BuyPhone(phoNe, out long sumPhone);
-            totalPhone = sumPhone;
-            using (StreamWriter sw = File.CreateText(Path.Combine(Common.FilePath, billFile)))
+            Console.WriteLine("Enter name update !");
+            string name = Console.ReadLine();
+            for (int i = 0; i < phone.Count; i++)
             {
-                sw.WriteLine($"Product Phone : {totalPhone} VND");
+                if (phone[i].NameProduct.ToLower() == name.ToLower())
+                {
+                    Console.WriteLine("Enter new amount !");
+                    phone[i].Amount = int.Parse(Console.ReadLine());
+                }
+                else
+                    Console.WriteLine("Name does not exist");
             }
-
         }
-        public static void BillPhone()
-        {
-            Helper<GioHang>.WriteFile(billFile, phoNe);
-            Console.WriteLine("Thanks !");
+        public static void buyPhone()
+        { 
+            Helper<GioHang>.BuyPhone(phone, out long sumPhone);
+            totalPhone = sumPhone;
         }
         //End Buy Phone
         //Star Buy Laptop
@@ -241,32 +255,40 @@ namespace ShopBanHang
                 }
                 for (int i = 0; i < result.LapTop.Count; i++)
                 {
+
                     if (result.LapTop[i].NameProduct.ToLower() == name.ToLower())
                     {
-                        if (check)
+                        if (result.LapTop[i].Amount < sl)
                         {
-                            foreach (Laptop laptop in laptops)
-                            {
-                                if (laptop.NameProduct.ToLower() == name.ToLower())
-                                {
-                                    laptop.Price += sl;
-                                }
-                            }
+                            Console.WriteLine("Enter too much, please enter less !");
                         }
                         else
                         {
-                            laptops.Add(new Laptop()
+                            if (check)
                             {
-                                NameProduct = name,
-                                Amount = sl,
-                                Price = result.LapTop[i].TotalMoney
-                            });
+                                foreach (Laptop laptop in laptops)
+                                {
+                                    if (laptop.NameProduct.ToLower() == name.ToLower())
+                                    {
+                                        laptop.Price += sl;
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                laptops.Add(new Laptop()
+                                {
+                                    NameProduct = name,
+                                    Amount = sl,
+                                    Price = result.LapTop[i].TotalMoney
+                                });
+                            }
                         }
                     }
                 }
                 Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine("|_________________________________|");
-                Console.WriteLine("|Do you want to continue shopping |?");
+                Console.WriteLine("___________________________________");
+                Console.WriteLine("|Do you want to continue shopping?|");
                 Console.WriteLine("|1.Continue to buy!               |");
                 Console.WriteLine("|2.Exit!                          |");
                 Console.WriteLine("|_________________________________|");
@@ -289,34 +311,45 @@ namespace ShopBanHang
                 Console.WriteLine(item.ToString());
             }
         }
+        public static void UpdateLaptop()
+        {
+            Console.WriteLine("Enter name update !");
+            string name = Console.ReadLine();
+            for(int i = 0; i < lapTop.Count;i++)
+            {
+                if (lapTop[i].NameProduct.ToLower() == name.ToLower())
+                {
+                    Console.WriteLine("Enter new amount !");
+                    lapTop[i].Amount = int.Parse(Console.ReadLine());
+                }
+                else
+                    Console.WriteLine("Name does not exist");
+            }    
+        }    
         public static void buyLaptop()
         {
             Helper<GioHang>.BuyLaptop(lapTop, out long sumLap);
             totalLaptop = sumLap;
-            using (StreamWriter sw = File.AppendText(Path.Combine(Common.FilePath, billFile)))
-            {
-                sw.WriteLine($"Product Laptop : {totalLaptop} VND");
-            }
-        }   
-        public static void BillLaptop()
-        {
-            Helper<GioHang>.WriteFile(billFile, lapTop);
-            Console.WriteLine("Thanks !");
+            
         }
         //End BuyLapTop
         public static void billAll(List<GioHang> gioHangs, out long bill)
         {
             bill = 0;
             bill = totalPhone + totalLaptop;
-                
-        } 
+        }
         public static void WriteBill()
         {
             Helper<GioHang>.billAll(gioHang, out long bill);
-            using (StreamWriter sw = File.AppendText(Path.Combine(Common.FilePath,billFile)))
+            string str = $"{bill} VND ";
+            billall.Bill.Add(phone);
+            billall.Bill.Add(lapTop);
+            billall.BillProduct = str;
+            using (StreamWriter sw = File.CreateText(Path.Combine(Common.FilePath, billFile)))
             {
-                sw.WriteLine($" Bill : {bill} VND");
+                sw.WriteLine(billall);
             }
+            Helper<GioHang>.WriteFile(billFile, billall);
         }
     }
 }

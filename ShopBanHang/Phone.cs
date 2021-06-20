@@ -18,5 +18,9 @@ namespace ShopBanHang
         {
             return $"Name Product : {NameProduct}\tPrice : {Price}\tAmount : {Amount}";
         }
+        public string ViewPhone()
+        {
+            return $"Name Product : {NameProduct}\t Price : {Price} ";
+        }
     }
 }

@@ -1,15 +1,21 @@
-Product Phone : 401400000 VND [
-  {
-    "NameProduct": "oppo",
-    "Price": 133800000,
-    "Amount": 3,
-    "TotalMoney": 401400000
-  }
-] Product Laptop : 930000000 VND [
-  {
-    "NameProduct": "hp",
-    "Price": 310000000,
-    "Amount": 3,
-    "TotalMoney": 930000000
-  }
-] Bill : 1331400000 VND
+ShopBanHang.BillAll {
+  "Bill": [
+    [
+      {
+        "NameProduct": "samsung",
+        "Price": 45800000,
+        "Amount": 3,
+        "TotalMoney": 137400000
+      }
+    ],
+    [
+      {
+        "NameProduct": "hp",
+        "Price": 310000000,
+        "Amount": 3,
+        "TotalMoney": 930000000
+      }
+    ]
+  ],
+  "BillProduct": "1067400000 VND "
+}
