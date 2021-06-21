@@ -31,7 +31,7 @@ namespace ShopBanHang
         {
             var serializeObject = JsonConvert.SerializeObject(data);
             var fullpath = Path.Combine(Common.FilePath, fileName);
-            using (StreamWriter sw = File.AppendText(fullpath))
+            using (StreamWriter sw = File.CreateText(fullpath))
             {
                 sw.WriteLine(serializeObject);
             }
@@ -377,14 +377,9 @@ namespace ShopBanHang
         public static void WriteBill()
         {
             Helper<GioHang>.billAll(gioHang, out long bill);
-            string str = $"{bill} VND ";
             billall.Bill.Add(phone);
             billall.Bill.Add(lapTop);
-            billall.BillProduct = str;
-            using (StreamWriter sw = File.CreateText(Path.Combine(Common.FilePath, billFile)))
-            {
-                sw.WriteLine(billall);
-            }
+            billall.BillProduct = bill;
             Helper<GioHang>.WriteFile(billFile, billall);
         }
     }

@@ -4,18 +4,24 @@
       {
         "NameProduct": "oppo",
         "Price": 133800000,
-        "Amount": 5,
-        "TotalMoney": 669000000
+        "Amount": 4,
+        "TotalMoney": 535200000
+      },
+      {
+        "NameProduct": "samsung",
+        "Price": 45800000,
+        "Amount": 4,
+        "TotalMoney": 183200000
       }
     ],
     [
       {
-        "NameProduct": "acer",
-        "Price": 390000000,
+        "NameProduct": "hp",
+        "Price": 31000000,
         "Amount": 5,
-        "TotalMoney": 1950000000
+        "TotalMoney": 155000000
       }
     ]
   ],
-  "BillProduct": "2351400000 VND "
+  "BillProduct": 873400000
 }
