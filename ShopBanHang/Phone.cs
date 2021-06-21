@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ShopBanHang
 {
-    class Phone
+    class Phone : IPhone
     {
         public string NameProduct { get; set; }
         public long Price { get; set; }
